@@ -26,11 +26,9 @@ import (
 	"fmt"
 	"os"
 	"os/user"
-	"strings"
 )
 
 var writtenby string = "Mateus R. Moreira\nhttps://www.github.com/mrm220396"
-
 
 func main() {
 	resp := WhoamI()
@@ -45,7 +43,11 @@ func WhoamI() string {
 		os.Exit(1)
 	}
 
-	switch strings.ToLower(os.Args[1]) {
+	if len(os.Args) < 2 {
+		return currentUser.Name
+	}
+
+	switch os.Args[1] {
 	case "--version":
 		return Version
 	case "--help":
@@ -58,12 +60,13 @@ func WhoamI() string {
 		return currentUser.Gid
 	case "username":
 		return currentUser.Username
-	
+
 	case "--original":
 		return GNU
-	
+
 	default:
-		wrong := fmt.Sprintf("Unfortunatly this argument is invalid\n%v\n\nWritten by: %v\n%v", Help, writtenby, GNU)
+		wrong := fmt.Sprintf("Unfortunatly this argument is invalid\n%v\n\nWritten by: %v\n%v",
+			Help, writtenby, GNU)
 		return wrong
 	}
 }
