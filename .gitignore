@@ -2,5 +2,6 @@
 */
 
 # But include directories with a .gitkeep or .gitignore file
+!**/*.go
 !**/.gitkeep
 !**/.gitignore
