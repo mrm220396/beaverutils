@@ -1,8 +1,5 @@
-/* Go Whoami whoami - Print information about the current user in Go.
-
-
-Copyright (C) 2023 Mateus R. Moreira
-GitHub: https://www.github.com/mrm220396
+/*
+	LICENSE GPL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,8 +16,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Equivalent to 'id -un' in the GNU coreutils.
 */
-
-package main
+package whoami
 
 import (
 	"fmt"
@@ -28,12 +24,40 @@ import (
 	"os/user"
 )
 
+var Version string = `0.0.01`
+
 var writtenby string = "Mateus R. Moreira\nhttps://www.github.com/mrm220396"
 
-func main() {
-	resp := WhoamI()
-	fmt.Println(resp)
-}
+var Help string = `
+***Program inspired in whoami from coreutils. 
+Originally written by Richard Mlynarik. Original C version of coreutils
+***
+Usage: whoami [OPTION]...
+Print the user name associated with the current effective user ID.
+Same as id -un.
+
+	--help        display this help and exit
+	--version     output version information and exit
+	home 			output the home directory of your user
+	username		output the current username
+	  
+	uid			output Uid is the user ID. On POSIX systems, 
+	  			this is a decimal number representing the uid. 
+	  			On Plan 9, this is the contents of /dev/user.
+	  
+	gid			Gid is the primary group ID. On POSIX systems, 
+	  			this is a decimal number representing the gid.       			
+`
+
+var GNU string = `
+Original GNU source:
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Report any translation bugs to <https://translationproject.org/team/>
+Full documentation <https://www.gnu.org/software/coreutils/whoami>
+or available locally via: info '(coreutils) whoami invocation'
+
+Written by Richard Mlynarik
+`
 
 func WhoamI() string {
 	// Current user receives all categories listed to user.Current()

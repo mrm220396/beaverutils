@@ -1,12 +1,15 @@
-# COREUTILS TRANSLATED TO GOLANG
+# Beaverutils is coreutils recreated in Golang
 
 ## Go Coreutils
 This project aims to provide a Go-based implementation of various commands found
 in the GNU Core Utilities (coreutils). The goal is to recreate these utilities in Go,
 emphasizing readability, maintainability, and idiomatic Go practices.
 
+It uses the current features the language offers in its libraries to make it easy
+to the user read and understand what's written there.
+
 Coreutils is a vast set of tools used everyday by UNIX users worldwide.
-The intention of this project is not whatsoever be a replacement for this,
+The intention of this project is not whatsoever be a replacement for Cureutils,
 the original repository and all needed links are listed on the Subtitle **Disclaimer**.
 My goal is to study golang and improve my own UNIX system comprehension.
 

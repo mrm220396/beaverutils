@@ -1,6 +1,5 @@
-/*
+/* Go Whoami whoami - Print information about the current user in Go.
 
-GO pwd - Prints the current folder the user is in
 
 Copyright (C) 2023 Mateus R. Moreira
 GitHub: https://www.github.com/mrm220396
@@ -21,19 +20,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 Equivalent to 'id -un' in the GNU coreutils.
 */
 
-package pwd
+package main
 
 import (
+	"beaverutils/src/whoami"
 	"fmt"
-	"os"
 )
 
-func Pwd() {
-	currentDir, err := os.Getwd()
-	if err != nil {
-		fmt.Printf("Error getting current directory: %v\n", err)
-		os.Exit(1)
-	}
-
-	fmt.Println(currentDir)
+func main() {
+	resp := whoami.WhoamI()
+	fmt.Println(resp)
 }
