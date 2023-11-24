@@ -26,6 +26,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 var (
@@ -57,11 +58,17 @@ func getIndent() string {
 	return ""
 }
 
+func checkCommand(root []string) {
+	fmt.Println("Sometime soon")
+}
+
 func DefaultPrint() {
 	root := os.Args
 
 	if len(os.Args) < 2 {
 		root = append(root, "./")
+	} else if strings.Contains(os.Args[1], "--") {
+		checkCommand(root)
 	}
 	err := filepath.Walk(root[1], visit)
 
