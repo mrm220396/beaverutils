@@ -1,0 +1,6 @@
+# Ignore all directories
+*/
+
+# But include directories with a .gitkeep or .gitignore file
+!**/.gitkeep
+!**/.gitignore
