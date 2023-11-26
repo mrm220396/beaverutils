@@ -31,4 +31,7 @@ directory within the src folder. This approach allows for a modular and organize
 
 You can find the list of utilities I've already translated into golang above:
 
+- wheather
 - whoami
+- pwd
+- tree
