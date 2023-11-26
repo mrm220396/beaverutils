@@ -35,3 +35,4 @@ You can find the list of utilities I've already translated into golang above:
 - whoami
 - pwd
 - tree
+- users

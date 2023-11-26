@@ -34,6 +34,10 @@ var (
 	fileCount      = 0
 )
 
+func GetDirOnly() {
+
+}
+
 func visit(path string, info os.FileInfo, err error) error {
 
 	// When permissions deny tree walking inside a folder
