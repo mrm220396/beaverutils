@@ -22,8 +22,8 @@ directory within the src folder. This approach allows for a modular and organize
 > Original GNU source:
     GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
     Report any translation bugs to <https://translationproject.org/team/>
-    Full documentation <https://www.gnu.org/software/coreutils/whoami>
-    or available locally via: info '(coreutils) whoami invocation'
+    Full documentation <https://www.gnu.org/software/coreutils/>
+    or available locally via: info '(coreutils) invocation'
 
     Written by Richard Mlynarik
 
