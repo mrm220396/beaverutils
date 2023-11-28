@@ -32,13 +32,24 @@ import (
 var (
 	directoryCount = 0
 	fileCount      = 0
+	root           []string
 )
 
-func GetDirOnly() {
+func GetDirOnly(path string, info os.FileInfo, err error) error {
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
 
+	if info.IsDir() {
+		fmt.Printf("%s|-- %s\n", getIndent(), info.Name())
+		directoryCount++
+	}
+
+	return err
 }
 
-func visit(path string, info os.FileInfo, err error) error {
+func FileAndDir(path string, info os.FileInfo, err error) error {
 
 	// When permissions deny tree walking inside a folder
 	// it'll continue to the next folder.
@@ -63,18 +74,23 @@ func getIndent() string {
 }
 
 func checkCommand(root []string) {
-	fmt.Println("Sometime soon")
+	switch root[1] {
+	case "--d":
+		filepath.Walk(root[2], GetDirOnly)
+		break
+	}
 }
 
 func DefaultPrint() {
-	root := os.Args
+	root = os.Args
 
 	if len(os.Args) < 2 {
 		root = append(root, "./")
 	} else if strings.Contains(os.Args[1], "--") {
+		root = append(root, "./")
 		checkCommand(root)
 	}
-	err := filepath.Walk(root[1], visit)
+	err := filepath.Walk(root[1], FileAndDir)
 
 	if err != nil {
 		fmt.Printf("error walking the path %v: %v\n", root, err)
