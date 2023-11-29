@@ -35,6 +35,23 @@ var (
 	root           []string
 )
 
+// GetFIleDoubleQuote responds to  -Q on command line, and returns
+// Quote the names of files in double quotes.
+func GetFileDoubleQuote(path string, info os.FileInfo, err error) error {
+	if err != nil {
+		fmt.Printf("No such a file or directory %d", err)
+		return nil
+	}
+
+	if info.IsDir() {
+		fmt.Printf("%s|-- \"%s\"\n", getIndent(), info.Name())
+	} else {
+		fmt.Printf("	%s|-- \"%s\"\n", getIndent(), info.Name())
+	}
+
+	return err
+}
+
 func GetDirOnly(path string, info os.FileInfo, err error) error {
 	if err != nil {
 		fmt.Println(err)
@@ -75,8 +92,11 @@ func getIndent() string {
 
 func checkCommand(root []string) {
 	switch root[1] {
-	case "--d":
+	case "-d":
 		filepath.Walk(root[2], GetDirOnly)
+		break
+	case "-Q":
+		filepath.Walk(root[2], GetFileDoubleQuote)
 		break
 	}
 }
@@ -86,7 +106,7 @@ func DefaultPrint() {
 
 	if len(os.Args) < 2 {
 		root = append(root, "./")
-	} else if strings.Contains(os.Args[1], "--") {
+	} else if strings.Contains(os.Args[1], "-") {
 		root = append(root, "./")
 		checkCommand(root)
 	}
