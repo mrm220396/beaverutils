@@ -52,6 +52,7 @@ func GetFileDoubleQuote(path string, info os.FileInfo, err error) error {
 	return err
 }
 
+// GetDirOnly returns only directory names
 func GetDirOnly(path string, info os.FileInfo, err error) error {
 	if err != nil {
 		fmt.Println(err)
@@ -66,6 +67,7 @@ func GetDirOnly(path string, info os.FileInfo, err error) error {
 	return err
 }
 
+// Shows file and directories
 func FileAndDir(path string, info os.FileInfo, err error) error {
 
 	// When permissions deny tree walking inside a folder
@@ -101,6 +103,7 @@ func checkCommand(root []string) {
 	}
 }
 
+// DefaultPrint returns the same as tree from CoreUtils
 func DefaultPrint() {
 	root = os.Args
 
